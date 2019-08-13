@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class PostCategory(models.Model):
     name = models.CharField(max_length=30)
+    slug = models.SlugField(max_length=30, unique=True, null=True)
 
     def __str__(self):
         return self.name
@@ -12,6 +13,7 @@ class PostCategory(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=80)
+    slug = models.SlugField(max_length=80, unique_for_date='published', null=True)
     sub_title = models.CharField(max_length=200)
     category = models.ManyToManyField(PostCategory)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
