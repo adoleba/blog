@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import environ
-
 env = environ.Env(
     DEBUG=(bool, False)
 )
@@ -120,3 +119,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = ('media',)
+MEDIA_URL = '/media/'
