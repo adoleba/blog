@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'posts',
+    'ckeditor',
+    'ckeditor_uploader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +125,12 @@ MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = ('static',)
+
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_UPLOAD_PATH = '/media'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}

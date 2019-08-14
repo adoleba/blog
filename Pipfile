@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 django-environ = "*"
 pillow = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.6"

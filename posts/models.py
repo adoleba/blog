@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 
 class PostCategory(models.Model):
@@ -21,7 +22,7 @@ class Post(models.Model):
     main_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     thumbnail_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     intro = models.CharField(max_length=500)
-    body = models.TextField()
+    body = RichTextField()
     created = models.DateTimeField(auto_now_add=True)
     published = models.DateTimeField(default=timezone.now)
     STATUS_CHOICES = (
