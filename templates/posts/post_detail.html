@@ -3,6 +3,47 @@
 {% load static %}
 
 {% block content %}
-    {{ post.title}}
+    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5" style="background-image:url('{{post.thumbnail_photo.url}}');">
+            <div class="opacity-medium bg-extra-dark-gray"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 one-second-screen display-table page-title-large">
+                        <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
+                            <span class="text-white opacity6 alt-font margin-10px-bottom display-block text-uppercase text-small">
+                                {{post.published|date:"d E Y"}} | by <a href="#" class="text-white">{{ post.author }} |
+                                {% for category in categories %}
+                                    {% if not forloop.last %}
+                                        <a href="#" class="text-white">{{category.name}},
+                                    {% else %}
+                                        <a href="#" class="text-white">{{category.name}}
+                                    {% endif %}
+                                        </a>
+                                {% endfor %}
+                            </span>
+                            <h1 class="text-white alt-font font-weight-600 margin-10px-bottom">{{post.title}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wow fadeIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center last-paragraph-no-margin">
+                        <h5 class="alt-font font-weight-600 text-extra-dark-gray">{{post.sub_title}}</h5>
+                    </div>
+                    <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center last-paragraph-no-margin">
+                        <h4 class="text-large text-extra-dark-gray">{{ post.intro }}</h4>
+
+                    </div>
+                    <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center margin-60px-bottom last-paragraph-no-margin sm-margin-30px-bottom">
+                        <p class="text-dark-gray">{{ post.body }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
 
 {% endblock %}
