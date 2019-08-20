@@ -45,5 +45,43 @@
             </div>
         </section>
 
+    <!--comments-->
+
+    <section class="wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center margin-80px-bottom sm-margin-50px-bottom xs-margin-15px-bottom">
+                    <div class="position-relative overflow-hidden width-100">
+                        <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase text-extra-dark-gray">
+                            {% with comments.count as total_comments %}
+                                {% if total_comments %}
+                                    {{ total_comments }} komentarz{{ total_comments|pluralize:'y' }}
+                                {% else %}
+                                    Do tego artykułu nie dodano jeszcze komentarzy
+                                {% endif %}
+                            {% endwith %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-sm-12 col-xs-12 center-col">
+                    <ul class="blog-comment">
+                        {% for comment in comments %}
+                            <li>
+                                <div class="display-table width-100">
+                                    <div class="padding-40px-left display-table-cell vertical-align-top last-paragraph-no-margin xs-no-padding-left xs-display-block">
+                                        <p class="text-extra-dark-gray text-uppercase alt-font font-weight-600 text-small">{{comment.author_name}}</p>
+                                        <div class="text-small text-medium-gray text-uppercase margin-10px-bottom">{{comment.created}}</div>
+                                        <p>{{ comment.body }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

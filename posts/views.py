@@ -21,10 +21,10 @@ def post_detail(request, year, month, day, slug):
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
             new_comment.save()
-        else:
-            comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
     return render(request, 'posts/post_detail.html', {'post': post, 'categories': categories,
-                                                      'comment_form': comment_form})
+                                                      'comment_form': comment_form, 'comments': comments})
 
 
 def posts_from_category():
