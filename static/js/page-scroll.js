@@ -458,7 +458,7 @@ function keydown(event) {
             x = options.arrowScroll;
             break;            
         default:
-            return true; // a key we don't care about
+            return true; // a key we don't care users
     }
 
     scrollArray(overflowing, x, y);
