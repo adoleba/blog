@@ -3,7 +3,7 @@ from posts.models import Post
 
 
 class PostComment(models.Model):
-    post = models.ForeignKey
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author_name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
