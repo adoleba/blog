@@ -1,3 +1,13 @@
 from django.db import models
+from posts.models import Post
 
-# Create your models here.
+
+class PostComment(models.Model):
+    post = models.ForeignKey
+    author_name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Autor: {}, post: {}'.format(self.author_name, self.post)
