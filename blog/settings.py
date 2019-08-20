@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'posts',
     'comments',
+    'users',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.admin',
