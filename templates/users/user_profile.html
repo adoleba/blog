@@ -10,16 +10,16 @@
                 <div class="col-md-5 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInLeft">
                     <div class="display-table width-100 height-100">
                         <div class="display-table-cell vertical-align-middle width-100 height-100">
-                            <img src="{{user.userprofile.photo.url}}" alt="" class="border-radius-6 width-100">
+                            <img src="{{photo.url}}" alt="" class="border-radius-6 width-100">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12 wow fadeInRight" data-wow-delay="0.2s">
                     <div class="display-table width-100 height-100">
                         <div class="display-table-cell vertical-align-middle padding-twelve-lr sm-text-center sm-no-padding width-100">
-                            <span class="text-deep-pink alt-font margin-10px-bottom display-inline-block text-medium">{{user.userprofile.intro_user}}</span>
-                            <p>{{user.userprofile.about_user}}</p>
-                            <a href="#" class="btn btn-dark-gray btn-small text-extra-small btn-rounded margin-5px-top">Wszystkie posty</a>
+                            <span class="text-deep-pink alt-font margin-10px-bottom display-inline-block text-medium">{{intro}}</span>
+                            <p>{{about}}</p>
+                            <a href="{% url 'users:user_posts' user=user %}" class="btn btn-dark-gray btn-small text-extra-small btn-rounded margin-5px-top">Wszystkie posty</a>
                         </div>
                     </div>
                 </div>
