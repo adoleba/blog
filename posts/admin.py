@@ -1,14 +1,5 @@
 from django.contrib import admin
-from posts.models import PostCategory, Post
-
-
-class PostCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    ordering = ('name',)
-    prepopulated_fields = {'slug': ('name',)}
-
-
-admin.site.register(PostCategory, PostCategoryAdmin)
+from posts.models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
