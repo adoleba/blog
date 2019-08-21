@@ -14,9 +14,9 @@
                                 <a href="{% url 'users:user_profile' user=post.author.username %}" class="text-white">{{ post.author }}</a> |
                                 {% for category in categories %}
                                     {% if not forloop.last %}
-                                        <a href="#" class="text-white">{{category.name}},
+                                        <a href="{{ category.get_absolute_url }}" class="text-white">{{category.name}},
                                     {% else %}
-                                        <a href="#" class="text-white">{{category.name}}
+                                        <a href="{{ category.get_absolute_url }}" class="text-white">{{category.name}}
                                     {% endif %}
                                         </a>
                                 {% endfor %}

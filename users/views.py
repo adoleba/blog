@@ -21,5 +21,5 @@ def user_posts(request, user):
     for field in userprofile:
         user = field.user
         photo = field.photo
-    posts = Post.objects.filter(author=user)
+    posts = Post.objects.filter(author=user).order_by('-created')
     return render(request, 'users/user_posts.html', {'posts': posts, 'user': user, 'photo': photo})
