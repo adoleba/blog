@@ -8,8 +8,8 @@ from categories.models import Category
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=80)
-    slug = models.SlugField(max_length=80, unique_for_date='published', null=True)
+    title = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, unique_for_date='published', null=True)
     sub_title = models.CharField(max_length=200)
     category = models.ManyToManyField(Category)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
