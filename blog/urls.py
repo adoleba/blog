@@ -18,11 +18,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from blog.views import error_404
+
 urlpatterns = [
     path('', include('posts.urls')),
     path('user/', include('users.urls')),
     path('category/', include('categories.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
-        + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+        + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = error_404
