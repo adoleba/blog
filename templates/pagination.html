@@ -9,8 +9,12 @@
                         <i class="fas fa-long-arrow-alt-left margin-5px-right xs-display-none"></i>Previous</a></li>
                     <li><a href="?page=1">1</a></li>
                 {% endif %}
+
                 {% if page_sub_1 > 1 %}
                     {% if posts.number > 3%}
+                        {% if posts.number != 4%}
+                            <li class="active"><a>...</a></li>
+                        {% endif %}
                         <li><a href="?page={% subtraction posts.number 2 %}">{% subtraction posts.number 2 %}</a></li>
                     {% endif %}
                     <li><a href="?page={% subtraction posts.number 1 %}">{% subtraction posts.number 1 %}</a></li>
@@ -23,6 +27,9 @@
                 {% endif %}
                 {% if page_add_2 < posts.paginator.num_pages%}
                     <li><a href="?page={{ posts.number|add:2 }}">{{ posts.number|add:2 }}</a></li>
+                    {% if page_add_2 != penult_page %}
+                        <li class="active"><a>...</a></li>
+                    {% endif %}
                 {% endif %}
 
 
