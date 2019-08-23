@@ -1,12 +1,21 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from posts.models import Post
 from comments.forms import CommentForm
 
 
 def index(request):
-    posts = Post.objects.filter(status='published').order_by('-published')
+    queryset = Post.objects.filter(status='published').order_by('-published')
+    paginator = Paginator(queryset, 2)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    page_add_1 = posts.number + 1
+    page_add_2 = posts.number + 2
+    page_sub_1 = posts.number - 1
+    page_sub_2 = posts.number - 2
     return render(request, 'posts/index.html',
-                  {'posts': posts})
+                  {'posts': posts, 'page_add_1': page_add_1, 'page_sub_1': page_sub_1, 'page_add_2': page_add_2,
+                   'page_sub_2': page_sub_2})
 
 
 def post_detail(request, year, month, day, slug):
