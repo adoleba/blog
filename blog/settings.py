@@ -131,10 +131,12 @@ MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
 CKEDITOR_IMAGE_BACKEND = 'pillow'
-CKEDITOR_UPLOAD_PATH = '/media'
+CKEDITOR_UPLOAD_PATH = 'images/'
 
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
     },
 }
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_RESTRICT_BY_DATE = True
