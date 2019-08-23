@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load subtraction %}
 
 {% block content %}
 
@@ -51,6 +52,43 @@
 
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class=" text-center margin-100px-top sm-margin-50px-top wow fadeInUp">
+            <div class="pagination text-small text-uppercase text-extra-dark-gray">
+                {% if posts.has_other_pages %}
+                    <ul>
+                        {% if posts.has_previous %}
+                            <li><a href="?page={{ posts.previous_page_number }}">
+                                <i class="fas fa-long-arrow-alt-left margin-5px-right xs-display-none"></i>Previous</a></li>
+                            <li><a href="?page=1">1</a></li>
+                        {% endif %}
+                        {% if page_sub_1 > 1 %}
+                            {% if posts.number > 3%}
+                                <li><a href="?page={% subtraction posts.number 2 %}">{% subtraction posts.number 2 %}</a></li>
+                            {% endif %}
+                            <li><a href="?page={% subtraction posts.number 1 %}">{% subtraction posts.number 1 %}</a></li>
+                        {% endif %}
+
+                        <li class="active"><a href="?page={{ posts.number }}">{{ posts.number }}</a></li>
+
+                        {% if page_add_1 < posts.paginator.num_pages%}
+                            <li><a href="?page={{ posts.number|add:1 }}">{{ posts.number|add:1 }}</a></li>
+                        {% endif %}
+                        {% if page_add_2 < posts.paginator.num_pages%}
+                            <li><a href="?page={{ posts.number|add:2 }}">{{ posts.number|add:2 }}</a></li>
+                        {% endif %}
+
+
+                        {% if posts.has_next %}
+                            <li><a href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a></li>
+                            <li><a href="?page={{ posts.next_page_number }}">Next<i class="fas fa-long-arrow-alt-right margin-5px-left xs-display-none"></i></a></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </section>

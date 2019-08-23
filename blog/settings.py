@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'comments',
     'users',
     'categories',
+    'core',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.admin',
