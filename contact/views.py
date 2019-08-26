@@ -38,10 +38,12 @@ def contact(request):
             email.content_subtype = 'html'
             email.send()
 
-            return redirect('post:index')
+            return redirect('contact:contact_thank_you')
     else:
         form = ContactForm()
 
     return render(request, 'contact/contact.html', {'contact': contact, 'form': form})
 
 
+def contact_thank_you(request):
+    return render(request, 'contact/contact_thank_you.html')
