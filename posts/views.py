@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from posts.models import Post
@@ -5,7 +7,7 @@ from comments.forms import CommentForm
 
 
 def index(request):
-    queryset = Post.objects.filter(status='published').order_by('-published')
+    queryset = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')
     paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     posts = paginator.get_page(page)

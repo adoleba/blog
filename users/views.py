@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
@@ -22,7 +24,7 @@ def user_posts(request, user):
     for field in userprofile:
         user = field.user
         photo = field.photo
-    queryset = Post.objects.filter(author=user).order_by('-created')
+    queryset = Post.objects.filter(author=user).filter(published__lte=datetime.now()).order_by('-created')
     paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     posts = paginator.get_page(page)

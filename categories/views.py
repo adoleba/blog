@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 
@@ -7,7 +9,7 @@ from posts.models import Post
 
 def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    queryset = Post.objects.filter(category=category).order_by('-created')
+    queryset = Post.objects.filter(category=category).filter(published__lte=datetime.now()).order_by('-created')
     paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
