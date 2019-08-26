@@ -141,3 +141,11 @@ CKEDITOR_CONFIGS = {
 }
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_DATE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'django.ania@gmail.com'
+EMAIL_HOST_PASSWORD = '0987poiu'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
