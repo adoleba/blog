@@ -31,17 +31,13 @@
 
     <section class="wow fadeIn bg-light-gray">
         <div class="container">
-            <form id="contact-form-3" action="javascript:void(0)" method="post">
+            <form action="." method="post">
                 <div class="row">
                     <div class="col-md-6 wow fadeIn center-col">
                         <div class="padding-fifteen-all bg-white border-radius-6 md-padding-seven-all">
-                            <div>
-                                <div id="success-contact-form-3" class="no-margin-lr"></div>
-                                <input type="text" name="name" id="name" placeholder="Name*" class="input-bg">
-                                <input type="text" name="email" id="email" placeholder="E-mail*" class="input-bg">
-                                <input type="text" name="subject" id="subject" placeholder="Subject" class="input-bg">
-                                <textarea name="comment" id="comment" placeholder="Your Message" class="input-bg"></textarea>
-                                <button id="contact-us-button-3" type="submit" class="btn btn-small border-radius-4 btn-black">send message</button>
+                            <div class="input-bg">
+                                {{ form }}
+                                <button id="contact-us-button-3" type="submit" class="btn btn-small border-radius-4 btn-black">Wyślij</button>
                             </div>
                         </div>
                     </div>
