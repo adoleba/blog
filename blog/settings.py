@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users',
     'categories',
     'core',
+    'contact',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.admin',
