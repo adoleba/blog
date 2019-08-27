@@ -2,13 +2,16 @@ from datetime import datetime
 
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
+
+from categories.models import Category
 from posts.models import Post
 from comments.forms import CommentForm
 
 
 def index(request):
     head_post = Post.objects.filter(status='published').filter(published__lte=datetime.now()).last()
-    categories = head_post.category.all()
+    head_post_categories = head_post.category.all()
+    all_categories = Category.objects.all()
 
     queryset = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')[1:]
     paginator = Paginator(queryset, 3)
@@ -22,7 +25,7 @@ def index(request):
     return render(request, 'posts/index.html',
                   {'posts': posts, 'page_add_1': page_add_1, 'page_sub_1': page_sub_1, 'page_add_2': page_add_2,
                    'page_sub_2': page_sub_2, 'penult_page': penult_page, 'head_post': head_post,
-                   'categories': categories})
+                   'head_post_categories': head_post_categories, 'all_categories': all_categories})
 
 
 def post_detail(request, year, month, day, slug):

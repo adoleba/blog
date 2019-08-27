@@ -9,6 +9,7 @@ from posts.models import Post
 
 def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
+    categories = Category.objects.all()
     queryset = Post.objects.filter(category=category).filter(published__lte=datetime.now()).order_by('-created')
     paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
@@ -21,4 +22,4 @@ def category_posts(request, slug):
     return render(request, 'categories/category_posts.html', {'category': category, 'posts': posts,
                                                               'page_add_1': page_add_1, 'page_sub_1': page_sub_1,
                                                               'page_add_2': page_add_2, 'page_sub_2': page_sub_2,
-                                                              'penult_page': penult_page})
+                                                              'penult_page': penult_page, 'categories': categories})

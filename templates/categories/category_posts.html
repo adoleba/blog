@@ -19,7 +19,21 @@
         </div>
     </section>
 
-    <section class="wow fadeIn">
+    <section class="wow fadeIn text-center padding-40px-top">
+
+        <ul class="nav nav-tabs border-none portfolio-filter-tab-1 font-weight-600 alt-font text-uppercase text-center margin-20px-bottom text-small sm-margin-20px-bottom xs-margin-10px-bottom">
+            <li class="xs-display-inline light-gray-text-link text-very-small"><a href="{% url 'post:index' %}">Wszystkie</a></li>
+            {% for one_category in categories %}
+                {% if category != one_category%}
+                <li><a href="{{one_category.get_absolute_url}}" class="xs-display-inline light-gray-text-link text-very-small">
+                    {{one_category.name}}</a></li>
+                {% else %}
+                    <li class="xs-display-inline light-gray-text-link text-very-small">
+                    {{one_category.name}}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
         <div class="container">
             <div class="row blog-post-style4">
                 <div class="col-md-12 no-padding xs-padding-15px-lr">
