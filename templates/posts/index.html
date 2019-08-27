@@ -5,14 +5,28 @@
 
 {% block content %}
 
-    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5" style="background-image:url({% static 'images/main_img.jpg' %});">
+    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5" style="background-image:url('{{head_post.main_photo.url}}');">
         <div class="opacity-medium bg-charcoal-gray"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 extra-small-screen display-table page-title-large">
                     <div class="display-table-cell vertical-align-middle text-center">
-                        <h1 class="text-white alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom">Blog Nusiaka</h1>
-                        <span class="text-white opacity6 alt-font">Tutaj będzie opis bloga i kolor zależny od zdjęcia</span>
+                        <span class="text-white opacity6 alt-font">
+                            {{head_post.published|date:"d E Y"}} | by
+                            <a href="{% url 'users:user_profile' user=head_post.author.username %}" class="text-white">{{ head_post.author }}</a> |
+                            {% for category in categories %}
+                                {% if not forloop.last %}
+                                    <a href="{{ category.get_absolute_url }}" class="text-white">{{category.name}},
+                                {% else %}
+                                    <a href="{{ category.get_absolute_url }}" class="text-white">{{category.name}}
+                                {% endif %}
+                                </a>
+                            {% endfor %}
+
+                        </span>
+                        <h1 class="text-white alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom">
+                            <a href="{{ head_post.get_absolute_url }}" class="text-white">
+                                {{head_post.title}}</a></h1>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,10 @@ from comments.forms import CommentForm
 
 
 def index(request):
-    queryset = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')
+    head_post = Post.objects.filter(status='published').filter(published__lte=datetime.now()).last()
+    categories = head_post.category.all()
+
+    queryset = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')[1:]
     paginator = Paginator(queryset, 3)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -18,7 +21,8 @@ def index(request):
     penult_page = posts.paginator.num_pages - 1
     return render(request, 'posts/index.html',
                   {'posts': posts, 'page_add_1': page_add_1, 'page_sub_1': page_sub_1, 'page_add_2': page_add_2,
-                   'page_sub_2': page_sub_2, 'penult_page': penult_page})
+                   'page_sub_2': page_sub_2, 'penult_page': penult_page, 'head_post': head_post,
+                   'categories': categories})
 
 
 def post_detail(request, year, month, day, slug):
