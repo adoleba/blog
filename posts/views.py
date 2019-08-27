@@ -37,5 +37,16 @@ def post_detail(request, year, month, day, slug):
     else:
         comment_form = CommentForm()
 
+    try:
+        previous_post = post.get_previous_by_published()
+    except post.DoesNotExist:
+        previous_post = post
+
+    try:
+        next_post = post.get_next_by_published()
+    except post.DoesNotExist:
+        next_post = post
+
     return render(request, 'posts/post_detail.html', {'post': post, 'categories': categories,
-                                                      'comment_form': comment_form, 'comments': comments})
+                                                      'comment_form': comment_form, 'comments': comments,
+                                                      'previous_post': previous_post, 'next_post': next_post})

@@ -28,6 +28,39 @@
         </div>
     </section>
 
+    <section class="wow fadeIn bg-light-gray border-top border-width-1 border-color-medium-gray no-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="display-table width-100 padding-30px-lr sm-padding-15px-lr">
+                    <div class="width-45 text-left display-table-cell vertical-align-middle">
+                        <div class="blog-nav-link blog-nav-link-prev text-extra-dark-gray">
+                            {% if previous_post != post %}
+                                <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Poprzedni post</span>
+                                <a href="{{ previous_post.get_absolute_url }}">
+                                    <i class="ti-arrow-left blog-nav-icon"></i>
+                                    {{ previous_post.title }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="width-45 text-right display-table-cell vertical-align-middle">
+                        <div class="blog-nav-link blog-nav-link-next text-extra-dark-gray">
+                            {% if next_post != post%}
+                                <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Następny post</span>
+                                <a href="{{ next_post.get_absolute_url }}">
+                                    <i class="ti-arrow-right blog-nav-icon"></i>
+                                    {{ next_post.title }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="wow fadeIn">
         <div class="container">
             <div class="row">
@@ -44,6 +77,11 @@
 
         </div>
     </section>
+
+
+
+
+
 
     <!--comments view-->
 
@@ -119,5 +157,8 @@
             </div>
         </div>
     </section>
+
+
+
 
 {% endblock %}
