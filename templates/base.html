@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,8 @@
 </head>
 <body>
     {% block navbar %}
-        {% include 'navbar.html' %}
+        {% load tags %}
+            {% nav_categories %}
     {% endblock %}
 
     {% block content %}
