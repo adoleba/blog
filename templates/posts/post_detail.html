@@ -118,8 +118,11 @@
                                             <p>{{ replay.body }}</p>
                                         {% endfor %}
 
-                                        <h5>Replay</h5>
+                                        <div class="comment_reply">
+                                            <button class="btn btn-dark-gray btn-small margin-15px-top">Odpowiedz</button>
+                                        </div>
 
+                                        <div class="comment_reply_form">
                                         <form action="" method="post">
                                             {% csrf_token %}
                                             <div class="col-md-4 col-sm-12 col-xs-12">
@@ -137,8 +140,16 @@
                                             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                                 <input type="hidden" name="parent_id" value="{{ comment.id }}">
                                                 <input class="btn btn-dark-gray btn-small margin-15px-top" type="submit" value="Dodaj">
+
                                             </div>
                                         </form>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                <div class="comment_reply_form_cancel">
+                                                    <button class="btn btn-dark-gray btn-small margin-15px-top">Anuluj</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </li>
