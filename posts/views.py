@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 
 from categories.models import Category
+from comments.models import PostComment
 from posts.models import Post
 from comments.forms import CommentForm
 
@@ -32,15 +33,28 @@ def post_detail(request, year, month, day, slug):
     post = get_object_or_404(Post, slug=slug, status='published', published__year=year,
                              published__month=month, published__day=day)
     categories = post.category.all()
-    comments = post.comments.all().order_by('-created')
+    comments = post.comments.filter(parent__isnull=True).order_by('-created')
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
+            parent_obj = None
+
+            try:
+                parent_id = int(request.POST.get('parent_id'))
+            except:
+                parent_id = None
+
+            if parent_id:
+                parent_obj = PostComment.objects.get(id=parent_id)
+                if parent_obj:
+                    replay_comment = comment_form.save(commit=False)
+                    replay_comment.parent = parent_obj
+
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
             new_comment.save()
-        return redirect(request.path)
+            return redirect(request.path)
     else:
         comment_form = CommentForm()
 

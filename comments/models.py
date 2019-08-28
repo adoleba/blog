@@ -8,6 +8,7 @@ class PostComment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
 
     def __str__(self):
         return 'Autor: {}, post: {}'.format(self.author_name, self.post)

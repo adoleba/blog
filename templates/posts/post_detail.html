@@ -112,6 +112,33 @@
                                         <p class="text-extra-dark-gray text-uppercase alt-font font-weight-600 text-small">{{comment.author_name}}</p>
                                         <div class="text-small text-medium-gray text-uppercase margin-10px-bottom">{{comment.created}}</div>
                                         <p>{{ comment.body }}</p>
+
+                                        {% for replay in comment.replies.all %}
+                                            <p>{{ replay.author_name }} | {{ replay.created }}</p>
+                                            <p>{{ replay.body }}</p>
+                                        {% endfor %}
+
+                                        <h5>Replay</h5>
+
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <p>Imię</p>
+                                                {{comment_form.author_name}}
+                                            </div>
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <p>Adres e-mail (nie zostanie wyświetlony)</p>
+                                                {{comment_form.email}}
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <p>Treść komentarza</p>
+                                                {{comment_form.body}}
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                                <input class="btn btn-dark-gray btn-small margin-15px-top" type="submit" value="Dodaj">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </li>
