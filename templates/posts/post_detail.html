@@ -78,13 +78,7 @@
         </div>
     </section>
 
-
-
-
-
-
     <!--comments view-->
-
     <section class="wow fadeIn">
         <div class="container">
             <div class="row">
@@ -113,42 +107,54 @@
                                         <div class="text-small text-medium-gray text-uppercase margin-10px-bottom">{{comment.created}}</div>
                                         <p>{{ comment.body }}</p>
 
-                                        {% for replay in comment.replies.all %}
-                                            <p>{{ replay.author_name }} | {{ replay.created }}</p>
-                                            <p>{{ replay.body }}</p>
-                                        {% endfor %}
-
                                         <div class="comment_reply">
-                                            <button class="btn btn-dark-gray btn-small margin-15px-top">Odpowiedz</button>
+                                            <a class="inner-link btn-reply text-uppercase alt-font text-extra-dark-gray">Odpowiedz</a>
                                         </div>
 
                                         <div class="comment_reply_form">
-                                        <form action="" method="post">
-                                            {% csrf_token %}
-                                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                                <p>Imię</p>
-                                                {{comment_form.author_name}}
-                                            </div>
-                                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                                <p>Adres e-mail (nie zostanie wyświetlony)</p>
-                                                {{comment_form.email}}
-                                            </div>
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <p>Treść komentarza</p>
-                                                {{comment_form.body}}
-                                            </div>
-                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                                                <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                                                <input class="btn btn-dark-gray btn-small margin-15px-top" type="submit" value="Dodaj">
+                                            <div class="row padding-30px-top">
+                                                <hr>
+                                                <form action="" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                                        <p>Imię</p>
+                                                        {{comment_form.author_name}}
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                                        <p>Adres e-mail (nie zostanie wyświetlony)</p>
+                                                        {{comment_form.email}}
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <p>Treść komentarza</p>
+                                                        {{comment_form.body}}
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                                        <input class="btn btn-small btn-transparent-black md-margin-15px-bottom sm-display-table sm-margin-lr-auto" type="submit" value="Dodaj">
 
-                                            </div>
-                                        </form>
-                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                                                <div class="comment_reply_form_cancel">
-                                                    <button class="btn btn-dark-gray btn-small margin-15px-top">Anuluj</button>
+                                                    </div>
+                                                </form>
+                                                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                    <div class="comment_reply_form_cancel">
+                                                        <button class="btn btn-dark-gray btn-small margin-15px-top">Anuluj</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {% for replay in comment.replies.all %}
+                                            <ul class="child-comment">
+                                                <li>
+                                                    <div class="display-table width-100">
+                                                        <div class="padding-40px-left display-table-cell vertical-align-top last-paragraph-no-margin xs-no-padding-left xs-display-block">
+                                                            <p class="text-extra-dark-gray text-uppercase alt-font font-weight-600 text-small">{{ replay.author_name }}</p>
+                                                            <div class="text-small text-medium-gray text-uppercase margin-10px-bottom">{{ replay.created }}</div>
+                                                                <p>{{ replay.body }}</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
 
                                     </div>
                                 </div>
@@ -195,8 +201,5 @@
             </div>
         </div>
     </section>
-
-
-
 
 {% endblock %}
