@@ -18,7 +18,7 @@
         </div>
     </section>
 
-    <section class="wow fadeIn">
+    <section class="wow fadeIn padding-20px-bottom">
         <div class="container">
             <div class="row blog-post-style4">
                 <div class="col-md-12 no-padding xs-padding-15px-lr">
@@ -52,8 +52,9 @@
                             <!-- end post item -->
                         {% else %}
                             <h5 class="text-large text-extra-dark-gray">Wybrany autor nie opublikował jeszcze żadnego postu.</h5>
-                            <p class="text-medium-gray margin-10px-top blog-hover-text text-center">
-                                Zapraszamy na <a href="{% url 'post:index' %}">stronę główną</a>, znajdziesz tam wiele innych artykułów :) </p>
+                            <h6 class="text-medium-gray margin-10px-top blog-hover-text text-center">
+                                Zapraszamy na <a href="{% url 'post:index' %}">stronę główną</a>, znajdziesz tam wiele innych artykułów :) </h6>
+
                         {% endif %}
                     </ul>
                 </div>
