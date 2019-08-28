@@ -37,9 +37,9 @@
         <div class="container">
             <div class="row blog-post-style4">
                 <div class="col-md-12 no-padding xs-padding-15px-lr">
-                    <ul class="blog-grid blog-3col gutter-large">
-                        <li class="grid-sizer"></li>
-                        {% if posts %}
+                    {% if posts %}
+                        <ul class="blog-grid blog-3col gutter-large">
+                            <li class="grid-sizer"></li>
                             <!-- start post item -->
                             {% for post in posts %}
                                 <li class="grid-item wow fadeInUp">
@@ -63,12 +63,14 @@
                                 </li>
                             {% endfor %}
                             <!-- end post item -->
-                        {% else %}
-                            <h5 class="text-large text-extra-dark-gray">W tej kategorii nie ma jeszcze żadnych postów.</h5>
-                            <p class="text-medium-gray margin-10px-top blog-hover-text text-center">
-                                Zapraszamy na <a href="{% url 'post:index' %}">stronę główną</a>, znajdziesz tam wiele innych artykułów :) </p>
-                        {% endif %}
-                    </ul>
+                        </ul>
+                    {% else %}
+                        <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center last-paragraph-no-margin padding-30px-top">
+                            <h5 class="text-center text-medium text-extra-dark-gray">W tej kategorii nie ma jeszcze żadnych postów.</h5>
+                            <p class="text-center xs-text-center text-medium line-height-28 xs-line-height-26">
+                                Zapraszamy na <a href="{% url 'post:index' %}"><strong>stronę główną</strong></a>, znajdziesz tam wiele innych artykułów :) </p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
