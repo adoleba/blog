@@ -10,6 +10,9 @@ django = "*"
 django-environ = "*"
 pillow = "*"
 django-ckeditor = "*"
+heroku = "*"
+django-heroku = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.6"
