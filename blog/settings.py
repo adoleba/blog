@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'contact',
     'ckeditor',
     'ckeditor_uploader',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

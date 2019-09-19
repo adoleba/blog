@@ -13,6 +13,7 @@ django-ckeditor = "*"
 heroku = "*"
 django-heroku = "*"
 gunicorn = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.6"
