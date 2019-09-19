@@ -1,9 +1,10 @@
 from django.urls import path
 
 
-from categories.api.views import CategoryListAPIView
+from categories.api.views import CategoryListAPIView, CategoryDetailAPIView
 app_name = 'categories'
 
 urlpatterns = [
-    path('', CategoryListAPIView.as_view(), name='list')
+    path('', CategoryListAPIView.as_view(), name='list'),
+    path('<slug>/', CategoryDetailAPIView.as_view(), name='detail')
     ]
