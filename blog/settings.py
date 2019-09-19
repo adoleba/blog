@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import environ
-import django_heroku
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -151,6 +150,3 @@ EMAIL_HOST_USER = 'django.ania@gmail.com'
 EMAIL_HOST_PASSWORD = '0987poiu'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-
-django_heroku.settings(locals())
