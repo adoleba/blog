@@ -12,3 +12,12 @@ class PostComment(models.Model):
 
     def __str__(self):
         return 'Autor: {}, post: {}'.format(self.author_name, self.post)
+
+    def children(self):
+        return PostComment.objects.filter(parent=self)
+
+    @property
+    def is_parent(self):
+        if self.parent is not None:
+            return False
+        return True
