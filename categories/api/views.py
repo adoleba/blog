@@ -16,3 +16,4 @@ class CategoryDetailAPIView(RetrieveAPIView):
     serializer_class = CategoryDetailSerializer
     queryset = Category.objects.all()
     lookup_field = 'slug'
+

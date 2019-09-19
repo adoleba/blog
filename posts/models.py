@@ -12,7 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique_for_date='published', null=True)
     sub_title = models.CharField(max_length=200)
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category, related_name='posts')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     main_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     thumbnail_photo = models.ImageField(upload_to='images/%Y/%m/%d')
@@ -32,3 +32,4 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post:post_detail', args=[self.published.year, self.published.strftime('%m'),
                                                  self.published.strftime('%d'), self.slug])
+
