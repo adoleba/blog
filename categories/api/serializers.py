@@ -1,7 +1,8 @@
+from django.utils.text import slugify
 from rest_framework.fields import SerializerMethodField
 from rest_framework.relations import HyperlinkedIdentityField, PrimaryKeyRelatedField, StringRelatedField, \
-    HyperlinkedRelatedField
-from rest_framework.serializers import ModelSerializer
+    HyperlinkedRelatedField, SlugRelatedField
+from rest_framework.serializers import ModelSerializer, Field
 
 from categories.models import Category
 from posts.models import Post
@@ -52,3 +53,21 @@ class CategoryDetailSerializer(ModelSerializer):
         category_name = obj.name
         return Post.objects.filter(category__name=category_name)
 
+
+class CategoryCreateUpdateDestroySerializer(ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = [
+            'name',
+            'photo',
+        ]
+
+    def create(self, validated_data):
+        name = validated_data.get('name')
+        photo = validated_data.get('photo')
+        slug = slugify(name)
+
+        category = Category.objects.create(name=name, photo=photo, slug=slug)
+
+        return category
