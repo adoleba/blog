@@ -1,6 +1,8 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, ListCreateAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.relations import PrimaryKeyRelatedField
 
-from posts.api.serializers import PostListSerializer, PostDetailSerializer
+from posts.api.serializers import PostListSerializer, PostDetailSerializer, PostCreateUpdateDestroySerializer
 from posts.models import Post
 
 
@@ -16,3 +18,12 @@ class PostDetailAPIView(RetrieveAPIView):
     queryset = Post.objects.all()
     serializer_class = PostDetailSerializer
     lookup_field = 'slug'
+
+
+class PostCreateAPIView(CreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostCreateUpdateDestroySerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)

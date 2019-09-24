@@ -51,3 +51,4 @@ class CategoryDetailSerializer(ModelSerializer):
     def get_posts(self, obj):
         category_name = obj.name
         return Post.objects.filter(category__name=category_name)
+

@@ -1,8 +1,9 @@
-from rest_framework.fields import SerializerMethodField
+from rest_framework.fields import SerializerMethodField, CurrentUserDefault, HiddenField
 from rest_framework.relations import HyperlinkedIdentityField, StringRelatedField, SlugRelatedField, \
-    HyperlinkedRelatedField
+    HyperlinkedRelatedField, PrimaryKeyRelatedField
 from rest_framework.serializers import ModelSerializer
 
+from categories.models import Category
 from comments.models import PostComment
 from posts.models import Post
 
@@ -98,3 +99,46 @@ class PostDetailSerializer(ModelSerializer):
         print(obj.name)
         category_name = obj.name
         return Post.objects.filter(category__name=category_name)
+
+
+class PostCreateUpdateDestroySerializer(ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = [
+            'title',
+            'sub_title',
+            'slug',
+            'category',
+            'created',
+            'published',
+            'status',
+            'main_photo',
+            'thumbnail_photo',
+            'intro',
+            'body',
+        ]
+
+    def create(self, validated_data):
+        title = validated_data.get('title')
+        author = validated_data.get('author')
+        sub_title = validated_data.get('sub_title')
+        slug = validated_data.get('slug')
+        categories = validated_data.get('category')
+        created = validated_data.get('created')
+        published = validated_data.get('published')
+        status = validated_data.get('status')
+        main_photo = validated_data.get('main_photo')
+        thumbnail_photo = validated_data.get('thumbnail_photo')
+        intro = validated_data.get('intro')
+        body = validated_data.get('body')
+
+        categories = Category.objects.filter(name__in=categories)
+
+        post = Post.objects.create(title=title, sub_title=sub_title, slug=slug, created=created, published=published,
+                                   status=status, main_photo=main_photo, thumbnail_photo=thumbnail_photo, intro=intro,
+                                   body=body, author=author)
+
+        post.category.set(categories)
+
+        return post
