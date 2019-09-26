@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import IsAdminUser
 
 from users.api.serializers import UserListSerializer, UserDetailSerializer, UserCreateUpdateDestroySerializer
+from users.api.permissions import IsRequestUserOrAdminUser
 
 User = get_user_model()
 
@@ -15,9 +16,10 @@ class UserListAPIView(ListAPIView):
         return queryset_list
 
 
-class UserDetailAPIView(RetrieveAPIView):
+class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = UserDetailSerializer
     queryset = User.objects.all()
+    permission_classes = [IsRequestUserOrAdminUser]
     lookup_field = 'username'
 
 
