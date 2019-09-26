@@ -1,7 +1,8 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from posts.api.serializers import PostListSerializer, PostDetailSerializer, PostCreateUpdateDestroySerializer
+from posts.api.permissions import IsAuthorOrAdminUser
 from posts.models import Post
 
 
@@ -13,9 +14,10 @@ class PostListAPIView(ListAPIView):
         return queryset_list
 
 
-class PostDetailAPIView(RetrieveAPIView):
+class PostDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostDetailSerializer
+    permission_classes = [IsAuthorOrAdminUser]
     lookup_field = 'slug'
 
 
