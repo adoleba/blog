@@ -1,3 +1,4 @@
+from django.utils.text import slugify
 from rest_framework.fields import SerializerMethodField, CurrentUserDefault, HiddenField
 from rest_framework.relations import HyperlinkedIdentityField, StringRelatedField, SlugRelatedField, \
     HyperlinkedRelatedField, PrimaryKeyRelatedField
@@ -108,7 +109,6 @@ class PostCreateUpdateDestroySerializer(ModelSerializer):
         fields = [
             'title',
             'sub_title',
-            'slug',
             'category',
             'created',
             'published',
@@ -123,7 +123,6 @@ class PostCreateUpdateDestroySerializer(ModelSerializer):
         title = validated_data.get('title')
         author = validated_data.get('author')
         sub_title = validated_data.get('sub_title')
-        slug = validated_data.get('slug')
         categories = validated_data.get('category')
         created = validated_data.get('created')
         published = validated_data.get('published')
@@ -132,6 +131,7 @@ class PostCreateUpdateDestroySerializer(ModelSerializer):
         thumbnail_photo = validated_data.get('thumbnail_photo')
         intro = validated_data.get('intro')
         body = validated_data.get('body')
+        slug = slugify(title)
 
         categories = Category.objects.filter(name__in=categories)
 
