@@ -1,11 +1,11 @@
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
 from categories.models import Category
+from users.models import User
 
 
 class Post(models.Model):
@@ -13,7 +13,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=50, unique_for_date='published', null=True)
     sub_title = models.CharField(max_length=200)
     category = models.ManyToManyField(Category, related_name='posts')
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey('users.User', on_delete=models.CASCADE, blank=True, null=True)
     main_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     thumbnail_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     intro = models.CharField(max_length=500)

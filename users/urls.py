@@ -5,6 +5,6 @@ from users.views import user_profile, user_posts
 app_name = 'users'
 
 urlpatterns = [
-    path('<user>/', user_profile, name='user_profile'),
-    path('<user>/posts/', user_posts, name='user_posts'),
+    path('<username>/', user_profile, name='user_profile'),
+    path('<username>/posts/', user_posts, name='user_posts'),
 ]

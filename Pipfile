@@ -14,6 +14,7 @@ heroku = "*"
 django-heroku = "*"
 gunicorn = "*"
 djangorestframework = "*"
+djangorestframework-jwt = "*"
 
 [requires]
 python_version = "3.6"

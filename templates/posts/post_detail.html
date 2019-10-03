@@ -11,7 +11,7 @@
                     <div class="display-table-cell vertical-align-middle text-center padding-30px-tb">
                         <span class="text-white opacity6 alt-font margin-10px-bottom display-block text-uppercase text-small">
                             {{post.published|date:"d E Y"}} | by
-                            <a href="{% url 'users:user_profile' user=post.author.username %}" class="text-white">{{ post.author }}</a> |
+                            <a href="{% url 'users:user_profile' username=post.author.username %}" class="text-white">{{ post.author }}</a> |
                             {% for category in categories %}
                                 {% if not forloop.last %}
                                     <a href="{{ category.get_absolute_url }}" class="text-white">{{category.name}},
