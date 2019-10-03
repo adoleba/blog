@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'categories',
     'core',
     'contact',
+    'authentication',
     'ckeditor',
     'ckeditor_uploader',
     'rest_framework',
