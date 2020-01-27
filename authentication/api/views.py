@@ -10,10 +10,12 @@ from authentication.api.serializers import UserLoginSerializer
 class UserLoginAPIView(APIView):
     permission_classes = [AllowAny]
     serializer_class = UserLoginSerializer
-    authentication_classes = [SessionAuthentication]
 
     def post(self, request):
-        user = request.data.get('user', {})
+        user = {}
+        user['username'] = request.data.get('username')
+        user['email'] = request.data.get('email')
+        user['password'] = request.data.get('password')
         serializer = self.serializer_class(data=user)
         serializer.is_valid(raise_exception=True)
 
