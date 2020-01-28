@@ -175,3 +175,6 @@ fabric.properties
 
 #database
 db
+
+#photos
+media
