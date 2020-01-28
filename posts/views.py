@@ -3,10 +3,10 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 
 from categories.models import Category
+from comments.forms import CommentForm
 from comments.models import PostComment
 from core.views import get_posts
 from posts.models import Post
-from comments.forms import CommentForm
 
 
 def index(request):

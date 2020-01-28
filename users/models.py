@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
 
 import jwt
+from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
-from ckeditor.fields import RichTextField
 
 
 class UserManager(BaseUserManager):
