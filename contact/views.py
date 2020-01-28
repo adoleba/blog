@@ -1,5 +1,4 @@
-from django.core.mail import send_mail, BadHeaderError, EmailMessage
-from django.http import HttpResponse
+from django.core.mail import EmailMessage
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import get_template
 

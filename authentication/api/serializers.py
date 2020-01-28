@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model, authenticate
-from django.db.models import Q
 from rest_framework.serializers import ModelSerializer, CharField, EmailField, ValidationError
+
+
 User = get_user_model()
 
 

@@ -6,15 +6,12 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "*"
-django-environ = "*"
-pillow = "*"
-django-ckeditor = "*"
-heroku = "*"
-django-heroku = "*"
-gunicorn = "*"
-djangorestframework = "*"
-djangorestframework-jwt = "*"
+django = "==2.2.6"
+django-environ = "==0.4.5"
+pillow = "==6.2.0"
+django-ckeditor = "==5.7.1"
+djangorestframework = "==3.10.3"
+djangorestframework-jwt = "==1.11.0"
 
 [requires]
-python_version = "3.6"
+python_version = "==3.6"

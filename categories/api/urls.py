@@ -1,7 +1,7 @@
 from django.urls import path
 
-
 from categories.api.views import CategoryListAPIView, CategoryDetailAPIView, CategoryCreateAPIView
+
 app_name = 'categories'
 
 urlpatterns = [

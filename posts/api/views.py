@@ -1,8 +1,8 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from posts.api.serializers import PostListSerializer, PostDetailSerializer, PostCreateUpdateDestroySerializer
 from posts.api.permissions import IsAuthorOrAdminUser
+from posts.api.serializers import PostListSerializer, PostDetailSerializer, PostCreateUpdateDestroySerializer
 from posts.models import Post
 
 

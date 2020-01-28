@@ -1,7 +1,7 @@
 from django.urls import path
 
-
 from posts.api.views import PostListAPIView, PostDetailAPIView, PostCreateAPIView
+
 app_name = 'posts'
 
 urlpatterns = [

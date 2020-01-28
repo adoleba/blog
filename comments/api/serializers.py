@@ -1,9 +1,8 @@
 from rest_framework.fields import SerializerMethodField
-from rest_framework.relations import HyperlinkedIdentityField, StringRelatedField, HyperlinkedRelatedField
+from rest_framework.relations import HyperlinkedIdentityField, HyperlinkedRelatedField
 from rest_framework.serializers import ModelSerializer
 
 from comments.models import PostComment
-from posts.api.serializers import PostDetailSerializer
 
 comment_detail_url = HyperlinkedIdentityField(
     view_name='comments-api:detail',

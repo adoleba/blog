@@ -2,8 +2,8 @@ from django.contrib.auth import get_user_model
 from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView
 from rest_framework.permissions import IsAdminUser
 
-from users.api.serializers import UserListSerializer, UserDetailSerializer, UserCreateUpdateDestroySerializer
 from users.api.permissions import IsRequestUserOrAdminUser
+from users.api.serializers import UserListSerializer, UserDetailSerializer, UserCreateUpdateDestroySerializer
 
 User = get_user_model()
 
