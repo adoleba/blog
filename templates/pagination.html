@@ -22,18 +22,18 @@
 
                 <li class="active"><a href="?page={{ posts.number }}">{{ posts.number }}</a></li>
 
-                {% if page_add_1 < posts.paginator.num_pages%}
-                    <li><a href="?page={{ posts.number|add:1 }}">{{ posts.number|add:1 }}</a></li>
-                {% endif %}
-                {% if page_add_2 < posts.paginator.num_pages%}
-                    <li><a href="?page={{ posts.number|add:2 }}">{{ posts.number|add:2 }}</a></li>
-                    {% if page_add_2 != penult_page %}
-                        <li class="active"><a>...</a></li>
-                    {% endif %}
-                {% endif %}
-
-
                 {% if posts.has_next %}
+
+                    {% if page_add_1 < posts.paginator.num_pages%}
+                        <li><a href="?page={{ posts.number|add:1 }}">{{ posts.number|add:1 }}</a></li>
+                    {% endif %}
+                    {% if page_add_2 < posts.paginator.num_pages%}
+                        <li><a href="?page={{ posts.number|add:2 }}">{{ posts.number|add:2 }}</a></li>
+                        {% if page_add_2 != penult_page %}
+                            <li class="active"><a>...</a></li>
+                        {% endif %}
+                    {% endif %}
+
                     <li><a href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a></li>
                     <li><a href="?page={{ posts.next_page_number }}">Next<i class="fas fa-long-arrow-alt-right margin-5px-left xs-display-none"></i></a></li>
                 {% endif %}
