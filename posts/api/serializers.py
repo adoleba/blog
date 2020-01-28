@@ -1,13 +1,11 @@
 from django.utils.text import slugify
-from rest_framework.fields import SerializerMethodField, CurrentUserDefault, HiddenField
-from rest_framework.relations import HyperlinkedIdentityField, StringRelatedField, SlugRelatedField, \
-    HyperlinkedRelatedField, PrimaryKeyRelatedField
+from rest_framework.fields import SerializerMethodField
+from rest_framework.relations import HyperlinkedIdentityField, SlugRelatedField, HyperlinkedRelatedField
 from rest_framework.serializers import ModelSerializer
 
 from categories.models import Category
 from comments.models import PostComment
 from posts.models import Post
-
 
 post_detail_url = HyperlinkedIdentityField(
     view_name='posts-api:detail',

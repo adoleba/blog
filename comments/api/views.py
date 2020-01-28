@@ -1,9 +1,7 @@
-from rest_framework.fields import HiddenField
 from rest_framework.generics import ListAPIView, RetrieveDestroyAPIView
-from rest_framework.permissions import IsAdminUser
 
-from comments.api.serializers import PostCommentListSerializer, PostCommentDetailSerializer
 from comments.api.permissions import IsAdminUserOrReadOnly
+from comments.api.serializers import PostCommentListSerializer, PostCommentDetailSerializer
 from comments.models import PostComment
 
 

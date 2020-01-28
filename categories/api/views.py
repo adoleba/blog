@@ -1,10 +1,10 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAdminUser
 
-from comments.api.permissions import IsAdminUserOrReadOnly
 from categories.api.serializers import CategoriesListSerializer, CategoryDetailSerializer, \
     CategoryCreateUpdateDestroySerializer
 from categories.models import Category
+from comments.api.permissions import IsAdminUserOrReadOnly
 
 
 class CategoryListAPIView(ListAPIView):

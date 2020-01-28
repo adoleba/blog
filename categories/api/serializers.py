@@ -1,8 +1,7 @@
 from django.utils.text import slugify
 from rest_framework.fields import SerializerMethodField
-from rest_framework.relations import HyperlinkedIdentityField, PrimaryKeyRelatedField, StringRelatedField, \
-    HyperlinkedRelatedField, SlugRelatedField
-from rest_framework.serializers import ModelSerializer, Field
+from rest_framework.relations import HyperlinkedIdentityField, HyperlinkedRelatedField
+from rest_framework.serializers import ModelSerializer
 
 from categories.models import Category
 from posts.models import Post
