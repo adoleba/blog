@@ -15,6 +15,9 @@
                     </button>
                     <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
                         <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
+                            <li class="dropdown megamenu-fw">
+                                <a href="{% url 'post:index' %}">Home</a>
+                            </li>
                             {% for category in nav_categories %}
                                 <li class="dropdown megamenu-fw">
                                     <a href="{{ category.get_absolute_url }}">{{category.name|upper}}</a>

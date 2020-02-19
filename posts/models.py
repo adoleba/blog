@@ -9,10 +9,10 @@ from users.models import User
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50, unique_for_date='published', null=True)
+    slug = models.SlugField(max_length=50, unique_for_date='published')
     sub_title = models.CharField(max_length=200)
     category = models.ManyToManyField(Category, related_name='posts')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, blank=True, null=True)
+    author = models.ForeignKey('users.User', on_delete=models.CASCADE)
     main_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     thumbnail_photo = models.ImageField(upload_to='images/%Y/%m/%d')
     intro = models.CharField(max_length=500)
