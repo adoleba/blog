@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 extra-small-screen display-table page-title-large">
                     <div class="display-table-cell vertical-align-middle text-center">
-                        <h1 class="text-white alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom">Posty użytkownika {{ user}}</h1>
+                        <h1 class="text-white alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom">Posty użytkownika {{ username}}</h1>
                     </div>
                 </div>
             </div>
@@ -24,6 +24,7 @@
                 <div class="col-md-12 no-padding xs-padding-15px-lr">
                     {% if posts %}
                         <ul class="blog-grid blog-3col gutter-large">
+                            <li class="grid-sizer"></li>
                             <!-- start post item -->
                             {% for post in posts %}
                                 <li class="grid-item wow fadeInUp">
