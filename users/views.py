@@ -10,13 +10,16 @@ from users.models import User
 
 def user_profile(request, username):
     userprofile = User.objects.filter(username=username)
+    ctx = {}
     for field in userprofile:
-        about = field.about_user
-        intro = field.intro_user
-        photo = field.photo
-        username = field.username
+        ctx['about'] = field.about_user
+        ctx['intro'] = field.intro_user
+        ctx['photo'] = field.photo
+        ctx['username'] = field.username
+        ctx['first_name'] = field.first_name
+        ctx['last_name'] = field.last_name
     return render(request, 'users/user_profile.html',
-                  {'userprofile': userprofile, 'about': about, 'intro': intro, 'photo': photo, 'username': username})
+                  {'userprofile': userprofile, **ctx})
 
 
 def user_posts(request, username):

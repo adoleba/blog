@@ -16,7 +16,10 @@
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12 wow fadeInRight" data-wow-delay="0.2s">
                     <div class="display-table width-100 height-100">
-                        <div class="display-table-cell vertical-align-middle padding-twelve-lr sm-text-center sm-no-padding width-100">
+                        <div class="display-table-cell vertical-align-middle padding-twelve-lr sm-text-center sm-no-padding">
+                            <h6 class="light-gray-text-link text-very-small">
+                                {{first_name}} {{ last_name }}
+                            </h6>
                             <span class="text-deep-pink alt-font margin-10px-bottom display-inline-block text-medium">{{intro}}</span>
                             <p>{{about|safe}}</p>
                             <a href="{% url 'users:user_posts' username=username %}" class="btn btn-dark-gray btn-small text-extra-small btn-rounded margin-5px-top">Wszystkie posty</a>
