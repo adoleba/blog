@@ -10,13 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import environ
+from environ import Env, Path
+import django_heroku
 
-env = environ.Env(
+env = Env(
     DEBUG=(bool, False)
 )
 
-environ.Env.read_env('.env')
+Env.read_env('.env')
+
+root = Path()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -31,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['*']
-
+BASE_DIR = root()
 
 # Application definition
 
@@ -57,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,6 +138,8 @@ STATICFILES_DIRS = ('static',)
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_UPLOAD_PATH = 'images/'
 
@@ -164,3 +170,6 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.User'
+
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']  # delete if will be postgres
