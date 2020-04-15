@@ -174,7 +174,7 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'users.User'
 
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']  # delete if will be postgres
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
 
 LOGGING = {
     'version': 1,
