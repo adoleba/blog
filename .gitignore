@@ -179,5 +179,5 @@ db
 #photos
 media
 
-staticfiles/
 static/
+staticfiles/
