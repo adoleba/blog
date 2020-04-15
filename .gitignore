@@ -178,3 +178,6 @@ db
 
 #photos
 media
+
+static/
+staticfiles/
