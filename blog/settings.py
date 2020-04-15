@@ -141,7 +141,6 @@ STATICFILES_DIRS = [root('static')]
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_UPLOAD_PATH = 'images/'
