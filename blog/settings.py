@@ -49,14 +49,13 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'rest_framework',
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +140,11 @@ STATICFILES_DIRS = [root('static')]
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
+
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
 
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_UPLOAD_PATH = 'images/'
@@ -172,9 +176,6 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.User'
-
-django_heroku.settings(locals())
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
 
 LOGGING = {
     'version': 1,
