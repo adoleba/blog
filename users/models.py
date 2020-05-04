@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 import jwt
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
 from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
@@ -44,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     intro_user = models.CharField(max_length=200, null=True)
     about_user = RichTextField()
-    photo = models.ImageField(upload_to='images/%Y/%m/%d', null=True)
+    photo = CloudinaryField('Photo', null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

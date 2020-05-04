@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import cloudinary
 from environ import Env, Path
 import django_heroku
 
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -156,6 +157,14 @@ CKEDITOR_CONFIGS = {
 }
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_DATE = True
+
+
+cloudinary.config(
+  cloud_name=env('CLOUD_NAME'),
+  api_key=env('API_KEY'),
+  api_secret=env('API_SECRET')
+)
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 

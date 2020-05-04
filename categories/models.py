@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.db import models
 from django.urls import reverse
 
@@ -5,7 +6,7 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=20)
     slug = models.SlugField(max_length=20, unique=True, null=True)
-    photo = models.ImageField(upload_to='images/%Y/%m/%d', null=True)
+    photo = CloudinaryField('Photo', null=True)
 
     def __str__(self):
         return self.name
