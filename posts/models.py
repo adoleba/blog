@@ -1,4 +1,5 @@
 from ckeditor_uploader.fields import RichTextUploadingField
+from cloudinary.models import CloudinaryField
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -13,8 +14,8 @@ class Post(models.Model):
     sub_title = models.CharField(max_length=200)
     category = models.ManyToManyField(Category, related_name='posts')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    main_photo = models.ImageField(upload_to='images/%Y/%m/%d')
-    thumbnail_photo = models.ImageField(upload_to='images/%Y/%m/%d')
+    main_photo = CloudinaryField('image')
+    thumbnail_photo = CloudinaryField('image')
     intro = models.CharField(max_length=500)
     body = RichTextUploadingField()
     created = models.DateTimeField(auto_now_add=True)
