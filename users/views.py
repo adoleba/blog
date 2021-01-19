@@ -28,8 +28,8 @@ def user_posts(request, username):
         username = field.username
         photo = field.photo
         number = field.id
-    queryset = Post.objects.filter(author=number).filter(published__lte=datetime.now()).order_by('-created')
+    posts = Post.objects.filter(author=number).filter(published__lte=datetime.now()).order_by('-created')
 
-    ctx = get_posts(request, queryset=queryset)
+    ctx = get_posts(request, queryset=posts)
 
-    return render(request, 'users/user_posts.html', {'username': username, 'photo': photo, **ctx})
+    return render(request, 'users/user_posts.html', {'username': username, 'photo': photo, 'posts': posts, **ctx})

@@ -10,7 +10,7 @@
                 <div class="col-md-5 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInLeft">
                     <div class="display-table width-100 height-100">
                         <div class="display-table-cell vertical-align-middle width-100 height-100">
-                            <img src="{{photo.url}}" alt="" class="border-radius-6 width-100">
+                            <img src="{{ photo.url }}" alt="" class="border-radius-6 width-100">
                         </div>
                     </div>
                 </div>
@@ -18,10 +18,10 @@
                     <div class="display-table width-100 height-100">
                         <div class="display-table-cell vertical-align-middle padding-twelve-lr sm-text-center sm-no-padding">
                             <h6 class="light-gray-text-link text-very-small">
-                                {{first_name}} {{ last_name }}
+                                {{ first_name }} {{ last_name }}
                             </h6>
-                            <span class="text-deep-pink alt-font margin-10px-bottom display-inline-block text-medium">{{intro}}</span>
-                            <p>{{about|safe}}</p>
+                            <span class="text-deep-pink alt-font margin-10px-bottom display-inline-block text-medium">{{ intro }}</span>
+                            <p>{{ about|safe }}</p>
                             <a href="{% url 'users:user_posts' username=username %}" class="btn btn-dark-gray btn-small text-extra-small btn-rounded margin-5px-top">All posts</a>
                         </div>
                     </div>

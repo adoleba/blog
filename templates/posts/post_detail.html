@@ -12,7 +12,7 @@
                         <span class="text-white opacity6 alt-font margin-10px-bottom display-block text-uppercase text-small">
                             {{post.published|date:"d E Y"}} | by
                             <a href="{% url 'users:user_profile' username=post.author.username %}" class="text-white">{{ post.author }}</a> |
-                            {% for category in categories %}
+                            {% for category in post_categories %}
                                 {% if not forloop.last %}
                                     <a href="{{ category.get_absolute_url }}" class="text-white">{{category.name}},
                                 {% else %}
@@ -46,7 +46,7 @@
 
                     <div class="width-45 text-right display-table-cell vertical-align-middle">
                         <div class="blog-nav-link blog-nav-link-next text-extra-dark-gray">
-                            {% if next_post != post%}
+                            {% if next_post != post %}
                                 <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Next post</span>
                                 <a href="{{ next_post.get_absolute_url }}">
                                     <i class="ti-arrow-right blog-nav-icon"></i>
@@ -65,7 +65,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center last-paragraph-no-margin">
-                    <h5 class="alt-font font-weight-600 text-extra-dark-gray">{{post.sub_title}}</h5>
+                    <h5 class="alt-font font-weight-600 text-extra-dark-gray">{{ post.sub_title }}</h5>
                 </div>
                 <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center last-paragraph-no-margin">
                     <h4 class="text-large text-extra-dark-gray">{{ post.intro }}</h4>
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-md-10 col-sm-12 col-xs-12 center-col">
                     <ul class="blog-comment">
-                        {% for comment in comments %}
+                        {% for comment in post_comments %}
                             <li>
                                 <div class="display-table width-100">
                                     <div class="padding-40px-left display-table-cell vertical-align-top last-paragraph-no-margin xs-no-padding-left xs-display-block">
@@ -118,15 +118,15 @@
                                                     {% csrf_token %}
                                                     <div class="col-md-4 col-sm-12 col-xs-12">
                                                         <p>Name</p>
-                                                        {{comment_form.author_name}}
+                                                        {{ comment_form.author_name }}
                                                     </div>
                                                     <div class="col-md-4 col-sm-12 col-xs-12">
                                                         <p>E-mail (will not be displayed)</p>
-                                                        {{comment_form.email}}
+                                                        {{ comment_form.email }}
                                                     </div>
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <p>Comment</p>
-                                                        {{comment_form.body}}
+                                                        {{ comment_form.body }}
                                                     </div>
                                                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                                         <input type="hidden" name="parent_id" value="{{ comment.id }}">
@@ -183,15 +183,15 @@
                         {% csrf_token %}
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <p>Name</p>
-                            {{comment_form.author_name}}
+                            {{ comment_form.author_name }}
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <p>E-mail (will not be displayed)</p>
-                            {{comment_form.email}}
+                            {{ comment_form.email }}
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <p>Comment</p>
-                            {{comment_form.body}}
+                            {{ comment_form.body }}
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                             <button class="btn btn-dark-gray btn-small margin-15px-top" type="submit">Add</button>

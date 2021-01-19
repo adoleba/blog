@@ -14,12 +14,12 @@ def index(request):
     head_post_categories = head_post.category.all()
     all_categories = Category.objects.all()
 
-    queryset = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')[1:]
+    posts = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')[1:]
 
-    ctx = get_posts(request, queryset=queryset)
+    ctx = get_posts(request, queryset=posts)
     return render(request, 'posts/index.html',
                   {'head_post': head_post, 'head_post_categories': head_post_categories,
-                   'all_categories': all_categories, **ctx})
+                   'all_categories': all_categories, 'posts': posts, **ctx})
 
 
 def post_detail(request, year, month, day, slug):
@@ -61,6 +61,6 @@ def post_detail(request, year, month, day, slug):
     except post.DoesNotExist:
         next_post = post
 
-    return render(request, 'posts/post_detail.html', {'post': post, 'categories': post_categories,
-                                                      'comment_form': comment_form, 'comments': post_comments,
+    return render(request, 'posts/post_detail.html', {'post': post, 'post_categories': post_categories,
+                                                      'comment_form': comment_form, 'post_comments': post_comments,
                                                       'previous_post': previous_post, 'next_post': next_post})
