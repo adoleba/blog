@@ -22,7 +22,7 @@ class Post(models.Model):
     published = models.DateTimeField(default=timezone.now)
     STATUS_CHOICES = (
         ('draft', 'Draft'),
-        ('published', 'Opublikowany')
+        ('published', 'Published')
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='published')
 

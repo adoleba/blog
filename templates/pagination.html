@@ -10,7 +10,7 @@
                     <li><a href="?page=1">1</a></li>
                 {% endif %}
 
-                {% if page_sub_1 > 1 %}
+                {% if current_page_minus_1 > 1 %}
                     {% if posts.number > 3%}
                         {% if posts.number != 4%}
                             <li class="active"><a>...</a></li>
@@ -24,12 +24,12 @@
 
                 {% if posts.has_next %}
 
-                    {% if page_add_1 < posts.paginator.num_pages%}
+                    {% if current_page_plus_1 < posts.paginator.num_pages%}
                         <li><a href="?page={{ posts.number|add:1 }}">{{ posts.number|add:1 }}</a></li>
                     {% endif %}
-                    {% if page_add_2 < posts.paginator.num_pages%}
+                    {% if current_page_plus_2 < posts.paginator.num_pages%}
                         <li><a href="?page={{ posts.number|add:2 }}">{{ posts.number|add:2 }}</a></li>
-                        {% if page_add_2 != penult_page %}
+                        {% if current_page_plus_2 != penult_page %}
                             <li class="active"><a>...</a></li>
                         {% endif %}
                     {% endif %}

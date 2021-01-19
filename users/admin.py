@@ -5,6 +5,7 @@ from users.models import User
 
 class UserAdmin(admin.ModelAdmin):
     model = User
+    exclude = ['password']
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)

@@ -14,9 +14,9 @@ def index(request):
     head_post_categories = head_post.category.all()
     all_categories = Category.objects.all()
 
-    queryset = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')[1:]
+    posts = Post.objects.filter(status='published').filter(published__lte=datetime.now()).order_by('-published')[1:]
 
-    ctx = get_posts(request, queryset=queryset)
+    ctx = get_posts(request, queryset=posts)
     return render(request, 'posts/index.html',
                   {'head_post': head_post, 'head_post_categories': head_post_categories,
                    'all_categories': all_categories, **ctx})
@@ -25,8 +25,8 @@ def index(request):
 def post_detail(request, year, month, day, slug):
     post = get_object_or_404(Post, slug=slug, status='published', published__year=year,
                              published__month=month, published__day=day)
-    categories = post.category.all()
-    comments = post.comments.filter(parent__isnull=True).order_by('-created')
+    post_categories = post.category.all()
+    post_comments = post.comments.filter(parent__isnull=True).order_by('-created')
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -61,6 +61,6 @@ def post_detail(request, year, month, day, slug):
     except post.DoesNotExist:
         next_post = post
 
-    return render(request, 'posts/post_detail.html', {'post': post, 'categories': categories,
-                                                      'comment_form': comment_form, 'comments': comments,
+    return render(request, 'posts/post_detail.html', {'post': post, 'post_categories': post_categories,
+                                                      'comment_form': comment_form, 'post_comments': post_comments,
                                                       'previous_post': previous_post, 'next_post': next_post})
