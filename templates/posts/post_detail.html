@@ -35,7 +35,7 @@
                     <div class="width-45 text-left display-table-cell vertical-align-middle">
                         <div class="blog-nav-link blog-nav-link-prev text-extra-dark-gray">
                             {% if previous_post != post %}
-                                <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Poprzedni post</span>
+                                <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Previous post</span>
                                 <a href="{{ previous_post.get_absolute_url }}">
                                     <i class="ti-arrow-left blog-nav-icon"></i>
                                     {{ previous_post.title }}
@@ -47,7 +47,7 @@
                     <div class="width-45 text-right display-table-cell vertical-align-middle">
                         <div class="blog-nav-link blog-nav-link-next text-extra-dark-gray">
                             {% if next_post != post%}
-                                <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Następny post</span>
+                                <span class="text-medium-gray text-extra-small display-block text-uppercase xs-display-none">Next post</span>
                                 <a href="{{ next_post.get_absolute_url }}">
                                     <i class="ti-arrow-right blog-nav-icon"></i>
                                     {{ next_post.title }}
@@ -87,9 +87,9 @@
                         <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase text-extra-dark-gray">
                             {% with comments.count as total_comments %}
                                 {% if total_comments %}
-                                    {{ total_comments }} komentarz{{ total_comments|pluralize:'y' }}
+                                    {{ total_comments }} comment{{ total_comments|pluralize:'s' }}
                                 {% else %}
-                                    Do tego artykułu nie dodano jeszcze komentarzy
+                                    There are no comments yet.
                                 {% endif %}
                             {% endwith %}
                         </span>
@@ -108,7 +108,7 @@
                                         <p>{{ comment.body }}</p>
 
                                         <div class="comment_reply">
-                                            <a class="inner-link btn-reply text-uppercase alt-font text-extra-dark-gray">Odpowiedz</a>
+                                            <a class="inner-link btn-reply text-uppercase alt-font text-extra-dark-gray">Reply</a>
                                         </div>
 
                                         <div class="comment_reply_form">
@@ -117,26 +117,26 @@
                                                 <form action="" method="post">
                                                     {% csrf_token %}
                                                     <div class="col-md-4 col-sm-12 col-xs-12">
-                                                        <p>Imię</p>
+                                                        <p>Name</p>
                                                         {{comment_form.author_name}}
                                                     </div>
                                                     <div class="col-md-4 col-sm-12 col-xs-12">
-                                                        <p>Adres e-mail (nie zostanie wyświetlony)</p>
+                                                        <p>E-mail (will not be displayed)</p>
                                                         {{comment_form.email}}
                                                     </div>
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <p>Treść komentarza</p>
+                                                        <p>Comment</p>
                                                         {{comment_form.body}}
                                                     </div>
                                                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                                         <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                                                        <input class="btn btn-small btn-transparent-black md-margin-15px-bottom sm-display-table sm-margin-lr-auto" type="submit" value="Dodaj">
+                                                        <input class="btn btn-small btn-transparent-black md-margin-15px-bottom sm-display-table sm-margin-lr-auto" type="submit" value="Add">
 
                                                     </div>
                                                 </form>
                                                 <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                                     <div class="comment_reply_form_cancel">
-                                                        <button class="btn btn-dark-gray btn-small margin-15px-top">Anuluj</button>
+                                                        <button class="btn btn-dark-gray btn-small margin-15px-top">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,7 +173,7 @@
             <div class="row">
                 <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center margin-80px-bottom xs-margin-40px-bottom">
                     <div class="position-relative overflow-hidden width-100">
-                        <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase text-extra-dark-gray">Napisz komentarz</span>
+                        <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase text-extra-dark-gray">Add a comment</span>
                     </div>
                 </div>
             </div>
@@ -182,19 +182,19 @@
                     <form action="" method="post">
                         {% csrf_token %}
                         <div class="col-md-4 col-sm-12 col-xs-12">
-                            <p>Imię</p>
+                            <p>Name</p>
                             {{comment_form.author_name}}
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12">
-                            <p>Adres e-mail (nie zostanie wyświetlony)</p>
+                            <p>E-mail (will not be displayed)</p>
                             {{comment_form.email}}
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <p>Treść komentarza</p>
+                            <p>Comment</p>
                             {{comment_form.body}}
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                            <button class="btn btn-dark-gray btn-small margin-15px-top" type="submit">Dodaj</button>
+                            <button class="btn btn-dark-gray btn-small margin-15px-top" type="submit">Add</button>
                         </div>
                     </form>
                 </div>

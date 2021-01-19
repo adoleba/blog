@@ -12,7 +12,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 extra-small-screen display-table page-title-large">
                     <div class="display-table-cell vertical-align-middle text-center">
                         <h1 class="text-white alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom">
-                            Posty z kategorii {{ category }}</h1>
+                            Posts from category {{ category }}</h1>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
     <section class="wow fadeIn text-center padding-40px-top padding-20px-bottom">
 
         <ul class="nav nav-tabs border-none portfolio-filter-tab-1 font-weight-600 alt-font text-uppercase text-center margin-20px-bottom text-small sm-margin-20px-bottom xs-margin-10px-bottom">
-            <li class="xs-display-inline light-gray-text-link text-very-small"><a href="{% url 'post:index' %}">Wszystkie</a></li>
+            <li class="xs-display-inline light-gray-text-link text-very-small"><a href="{% url 'post:index' %}">All</a></li>
             {% for one_category in categories %}
                 {% if category != one_category%}
                 <li><a href="{{one_category.get_absolute_url}}" class="xs-display-inline light-gray-text-link text-very-small">
@@ -67,9 +67,9 @@
                         </ul>
                     {% else %}
                         <div class="col-md-10 col-sm-12 col-xs-12 center-col text-center last-paragraph-no-margin padding-30px-top">
-                            <h5 class="text-center text-medium text-extra-dark-gray">W tej kategorii nie ma jeszcze żadnych postów.</h5>
+                            <h5 class="text-center text-medium text-extra-dark-gray">There are no posts yet</h5>
                             <p class="text-center xs-text-center text-medium line-height-28 xs-line-height-26">
-                                Zapraszamy na <a href="{% url 'post:index' %}"><strong>stronę główną</strong></a>, znajdziesz tam wiele innych artykułów :) </p>
+                                Back to <a href="{% url 'post:index' %}"><strong>homepage</strong></a>, you will find many other articles there :) </p>
                         </div>
                     {% endif %}
                 </div>

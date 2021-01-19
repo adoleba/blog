@@ -28,7 +28,7 @@ def contact(request):
             content = template.render(context)
 
             email = EmailMessage(
-                "Wiadomość z formularza kontaktowego",
+                "Message from ContactForm",
                 content,
                 "blog" + '',
                 ['django.ania@gmail.com'],
