@@ -25,8 +25,8 @@ def index(request):
 def post_detail(request, year, month, day, slug):
     post = get_object_or_404(Post, slug=slug, status='published', published__year=year,
                              published__month=month, published__day=day)
-    categories = post.category.all()
-    comments = post.comments.filter(parent__isnull=True).order_by('-created')
+    post_categories = post.category.all()
+    post_comments = post.comments.filter(parent__isnull=True).order_by('-created')
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -61,6 +61,6 @@ def post_detail(request, year, month, day, slug):
     except post.DoesNotExist:
         next_post = post
 
-    return render(request, 'posts/post_detail.html', {'post': post, 'categories': categories,
-                                                      'comment_form': comment_form, 'comments': comments,
+    return render(request, 'posts/post_detail.html', {'post': post, 'categories': post_categories,
+                                                      'comment_form': comment_form, 'comments': post_comments,
                                                       'previous_post': previous_post, 'next_post': next_post})
