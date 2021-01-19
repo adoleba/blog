@@ -16,5 +16,5 @@ def category_posts(request, slug):
 
     return render(
         request, 'categories/category_posts.html',
-        {'post_category': post_category, 'categories': categories, 'posts': posts, **ctx}
+        {'post_category': post_category, 'categories': categories, **ctx}
     )

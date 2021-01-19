@@ -19,7 +19,7 @@ def index(request):
     ctx = get_posts(request, queryset=posts)
     return render(request, 'posts/index.html',
                   {'head_post': head_post, 'head_post_categories': head_post_categories,
-                   'all_categories': all_categories, 'posts': posts, **ctx})
+                   'all_categories': all_categories, **ctx})
 
 
 def post_detail(request, year, month, day, slug):

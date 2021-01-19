@@ -32,4 +32,4 @@ def user_posts(request, username):
 
     ctx = get_posts(request, queryset=posts)
 
-    return render(request, 'users/user_posts.html', {'username': username, 'photo': photo, 'posts': posts, **ctx})
+    return render(request, 'users/user_posts.html', {'username': username, 'photo': photo, **ctx})
