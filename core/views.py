@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 
 
 def get_posts(request, queryset):
-    paginator = Paginator(queryset, 1)
+    paginator = Paginator(queryset, 6)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     ctx = {
